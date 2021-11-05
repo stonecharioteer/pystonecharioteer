@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "stonecharioteer"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["Vinay Keerthi <11478411+stonecharioteer@users.noreply.github.com>"]
 

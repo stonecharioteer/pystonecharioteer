@@ -13,6 +13,7 @@ from libqtile.widget import (
     QuickExit,
     Spacer,
     Systray,
+    Volume,
     WindowName,
 )
 
@@ -30,6 +31,7 @@ capslock_numlock_indicator = CapsNumLockIndicator()
 cpu_indicator = CPUGraph()
 memory_indicator = MemoryGraph()
 hdd_indicator = HDDGraph()
+volume_control = Volume()
 
 # TODO: Only add this if this is a laptop, control through config.
 battery_indicator = Battery()
@@ -47,6 +49,7 @@ default_top_bar = Bar(
         hdd_indicator,
         system_tray,
         network_indicator,
+        volume_control,
         capslock_numlock_indicator,
     ],
     default_size,
