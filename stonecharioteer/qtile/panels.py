@@ -1,18 +1,19 @@
 """Holds all the bars"""
 from libqtile.widget import (
     Battery,
-    CPUGraph,
+    CPU,
     CapsNumLockIndicator,
     Clock,
     CurrentLayout,
     GroupBox,
     HDDGraph,
-    MemoryGraph,
+    Memory,
     Net,
     Prompt,
     QuickExit,
     Spacer,
     Systray,
+    TextBox,
     Volume,
     WindowName,
 )
@@ -28,8 +29,8 @@ clock_widget = Clock(format="%Y-%m-%d %a %I:%M %p")
 system_tray = Systray()
 quick_exit = QuickExit()
 capslock_numlock_indicator = CapsNumLockIndicator()
-cpu_indicator = CPUGraph()
-memory_indicator = MemoryGraph()
+cpu_indicator = CPU()
+memory_indicator = Memory()
 hdd_indicator = HDDGraph()
 volume_control = Volume()
 
@@ -44,11 +45,16 @@ default_top_bar = Bar(
         current_layout,
         prompt_widget,
         spacer,
+        TextBox(text="CPU:"),
         cpu_indicator,
+        TextBox(text="Memory:"),
         memory_indicator,
+        TextBox(text="HDD:"),
         hdd_indicator,
         system_tray,
+        TextBox(text="Net:"),
         network_indicator,
+        TextBox(text="Vol:"),
         volume_control,
         capslock_numlock_indicator,
     ],
@@ -59,7 +65,9 @@ default_bottom_bar = Bar(
         group_box,
         window_name,
         clock_widget,
+        TextBox(text="Battery ["),
         battery_indicator,
+        TextBox(text="]"),
         quick_exit,
     ],
     default_size,
