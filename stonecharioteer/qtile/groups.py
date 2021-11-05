@@ -6,10 +6,11 @@ from libqtile.config import Group
 
 class GroupName(Enum):
     """Enumerated group names"""
+
     MAIL = "mail"
     TERM = "terminal"
     PERSONAL = "personal"
     TINKERING = "tinkering"
 
 
-groups = [Group(group) for group in list(GroupName)]
+groups = [Group(group.value) for group in list(GroupName)]

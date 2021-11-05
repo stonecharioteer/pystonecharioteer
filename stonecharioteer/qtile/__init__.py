@@ -21,7 +21,7 @@ def config():
     screens = configure_screens()
 
     logger.debug("Setting `mod` key")
-    configurables["mod"] = MOD
+    configurables["mod"] = MOD.value
     logger.debug("Setting `groups`")
     configurables["groups"] = groups
     logger.debug("Setting `terminal`")

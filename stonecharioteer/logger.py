@@ -6,8 +6,7 @@ logger = logging.getLogger("stonecharioteer")
 
 
 def configure_logger():
-    logfile = pathlib.Path("~/.logs/stonecharioteer.log")
-
+    logfile = pathlib.Path.home() / pathlib.Path(".logs/stonecharioteer.log")
     logfile.parent.mkdir(parents=True, exist_ok=True)
     # TODO: Read config and set the log level.
     logger.setLevel(logging.DEBUG)

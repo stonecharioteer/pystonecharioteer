@@ -7,9 +7,9 @@ from stonecharioteer.qtile.inputs import Keyboard, MOD
 def configure_keymaps(groups):
     """Configures keymaps"""
     terminal = guess_terminal()
-    MODIFIER_SET_1 = [MOD]
-    MODIFIER_SET_2 = [MOD, Keyboard.SHIFT]
-    MODIFIER_SET_3 = [MOD, Keyboard.CTRL]
+    MODIFIER_SET_1 = [MOD.value]
+    MODIFIER_SET_2 = [MOD.value, Keyboard.SHIFT.value]
+    MODIFIER_SET_3 = [MOD.value, Keyboard.CTRL.value]
     # Movement keymaps
     keys = [
         # Switch between windows
