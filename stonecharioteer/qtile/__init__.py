@@ -10,6 +10,7 @@ def config():
     from stonecharioteer.qtile.inputs import MOD
     from stonecharioteer.qtile.layouts import layouts
     from stonecharioteer.qtile.screens import configure_screens
+    from stonecharioteer.qtile.keymaps import configure_keymaps
 
     screens = configure_screens()
     globals()["mod"] = MOD
