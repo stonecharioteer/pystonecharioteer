@@ -39,3 +39,8 @@ In your :code:`~/.config/qtile/config.py` file, add the following:
     auto_minimize = c["auto_minimize"]
 
 Eventually, I want to enable :code:`toml` based configuration for :code:`qtile`.
+
+Obligatory Rice
+=================
+
+.. image:: docs/rice-001.png
