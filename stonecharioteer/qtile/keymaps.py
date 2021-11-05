@@ -6,7 +6,6 @@ from stonecharioteer.qtile.inputs import Keyboard, MOD
 
 def configure_keymaps(groups):
     """Configures keymaps"""
-    keymaps = []
     terminal = guess_terminal()
     MODIFIER_SET_1 = [MOD]
     MODIFIER_SET_2 = [MOD, Keyboard.SHIFT]
