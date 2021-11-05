@@ -7,10 +7,16 @@ class Keyboard(Enum):
     """An enum to hold the keyboard key names"""
     ALT = "mod1"
     CTRL = "control"
+    SPACE = "space"
+    ENTER = "Return"
+    RETURN = "Return"
     SHIFT = "shift"
     SUPER = "mod4"
     TAB = "Tab"
-    
+
+# Set the default modifier key for qtile
+MOD = Keyboard.SUPER
+
 
 class Mouse(Enum):
     """An enum to hold the mouse button names"""

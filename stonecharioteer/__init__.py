@@ -1,3 +1,3 @@
 __version__ = '0.1.0'
 
-from stonecharioteer.qtile import qtile_config
+from stonecharioteer.qtile import config
