@@ -10,6 +10,7 @@ requests = "^2.26.0"
 qtile = "^0.18.1"
 rich = "^10.12.0"
 toml = "^0.10.2"
+psutil = "^5.8.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
