@@ -69,7 +69,9 @@ def configure_keymaps(groups):
         # Toggle between different layouts as defined below
         Key(MODIFIER_SET_1, "Tab", lazy.next_layout(), desc="Toggle between layouts"),
         Key(MODIFIER_SET_1, "w", lazy.window.kill(), desc="Kill focused window"),
-        Key(MODIFIER_SET_3, "r", lazy.reload_config(), desc="Reload the config"),
+        Key(
+            MODIFIER_SET_3, "r", lazy.restart(), desc="Restart Qtile and reload config"
+        ),
         Key(MODIFIER_SET_3, "q", lazy.shutdown(), desc="Shutdown Qtile"),
         Key(
             MODIFIER_SET_1,
