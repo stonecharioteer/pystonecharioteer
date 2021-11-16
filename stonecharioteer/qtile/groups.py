@@ -8,9 +8,12 @@ class GroupName(Enum):
     """Enumerated group names"""
 
     MAIL = "mail"
+    CHAT = "chat"
     TERM = "terminal"
     PERSONAL = "personal"
     TINKERING = "tinkering"
+    DEV = "dev"
+    CALL = "call"
 
 
-groups = [Group(group.value) for group in list(GroupName)]
+groups = [Group(f"{ix+1}: {group.value}") for ix, group in enumerate(list(GroupName))]
