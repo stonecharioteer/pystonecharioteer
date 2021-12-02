@@ -60,7 +60,15 @@ def get_top_bar():
 
 
 def get_bottom_bar():
-    group_box = GroupBox()
+    group_box = GroupBox(
+        active="FFFFFF",
+        inactive="888888",
+        other_current_screen_border="007700",
+        other_screen_border="000077",
+        use_mouse_wheel=False,
+        highlight_method="block",
+        default_font="serif",
+    )
     window_name = WindowName()
     clock_widget = Clock(format="%Y-%m-%d %a %I:%M %p")
     quick_exit = QuickExit()
