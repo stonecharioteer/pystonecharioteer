@@ -63,8 +63,10 @@ def get_bottom_bar():
     group_box = GroupBox(
         active="FFFFFF",
         inactive="888888",
-        other_current_screen_border="007700",
-        other_screen_border="000077",
+        # this_screen_border="007700",
+        this_current_screen_border="770000",
+        # other_current_screen_border="215578",
+        # other_screen_border="0215578",
         use_mouse_wheel=False,
         highlight_method="block",
         default_font="serif",
