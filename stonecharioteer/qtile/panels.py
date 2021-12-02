@@ -20,29 +20,22 @@ from libqtile.widget import (
 
 from libqtile.bar import Bar, STRETCH
 
-# TODO: Modularize and create a constructor function
-current_layout = CurrentLayout()
-group_box = GroupBox()
-prompt_widget = Prompt()
-window_name = WindowName()
-clock_widget = Clock(format="%Y-%m-%d %a %I:%M %p")
-system_tray = Systray()
-quick_exit = QuickExit()
-capslock_numlock_indicator = CapsNumLockIndicator()
-cpu_indicator = CPU()
-memory_indicator = Memory()
-hdd_indicator = HDDGraph()
-volume_control = Volume(cardid="1")
-
-# TODO: Only add this if this is a laptop, control through config.
-battery_indicator = Battery()
-network_indicator = Net()
-spacer = Spacer(length=STRETCH)
-
-default_size = 24
-
 
 def get_top_bar():
+    current_layout = CurrentLayout()
+    prompt_widget = Prompt()
+    system_tray = Systray()
+    capslock_numlock_indicator = CapsNumLockIndicator()
+    cpu_indicator = CPU()
+    memory_indicator = Memory()
+    hdd_indicator = HDDGraph()
+    volume_control = Volume(cardid="1")
+
+    network_indicator = Net()
+    spacer = Spacer(length=STRETCH)
+
+    default_size = 24
+
     default_top_bar = Bar(
         [
             current_layout,
@@ -67,6 +60,16 @@ def get_top_bar():
 
 
 def get_bottom_bar():
+    group_box = GroupBox()
+    window_name = WindowName()
+    clock_widget = Clock(format="%Y-%m-%d %a %I:%M %p")
+    quick_exit = QuickExit()
+
+    # TODO: Only add this if this is a laptop, control through config.
+    battery_indicator = Battery()
+
+    default_size = 24
+
     default_bottom_bar = Bar(
         [
             group_box,
