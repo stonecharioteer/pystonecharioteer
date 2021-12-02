@@ -22,8 +22,6 @@ def configure_screens():
         for display in displays:
             display_name = display["name"]
             if display_name != "eDP":
-                continue
-            else:
                 screen = Screen(bottom=get_bottom_bar())
                 screens.append(screen)
     return screens
