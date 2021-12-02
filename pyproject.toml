@@ -13,6 +13,7 @@ toml = "^0.10.2"
 psutil = "^5.8.0"
 types-toml = "^0.10.1"
 mypy = "^0.910"
+python-xlib = "^0.31"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
