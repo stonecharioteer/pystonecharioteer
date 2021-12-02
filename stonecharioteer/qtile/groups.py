@@ -7,12 +7,12 @@ from libqtile.config import Group
 class GroupName(Enum):
     """Enumerated group names"""
 
-    MAIL = "mail"
+    WEB = "web"
     CHAT = "chat"
-    TERM = "terminal"
+    TERM = "term"
     PERSONAL = "personal"
-    TINKERING = "tinkering"
     DEV = "dev"
+    TMP = "tmp"
     CALL = "call"
 
 

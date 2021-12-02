@@ -3,7 +3,7 @@ are.
 """
 
 from libqtile.config import Screen
-from stonecharioteer.qtile.panels import default_top_bar, default_bottom_bar
+from stonecharioteer.qtile.panels import get_top_bar, get_bottom_bar
 from stonecharioteer.utils.displays import get_display_info
 
 
@@ -13,8 +13,8 @@ def configure_screens():
     displays = get_display_info()
 
     default_screen = Screen(
-        top=default_top_bar,
-        bottom=default_bottom_bar,
+        top=get_top_bar(),
+        bottom=get_bottom_bar(),
     )
 
     screens = [default_screen]
@@ -24,6 +24,6 @@ def configure_screens():
             if display_name != "eDP":
                 continue
             else:
-                screen = Screen(bottom=default_bottom_bar)
+                screen = Screen(bottom=get_bottom_bar())
                 screens.append(screen)
     return screens
