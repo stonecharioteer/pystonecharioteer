@@ -6,7 +6,7 @@ from stonecharioteer.qtile.inputs import Keyboard, MOD
 
 def configure_keymaps(groups):
     """Configures keymaps"""
-    terminal = guess_terminal()
+    terminal = "/bin/konsole"
     MODIFIER_SET_1 = [MOD.value]
     MODIFIER_SET_2 = [MOD.value, Keyboard.SHIFT.value]
     MODIFIER_SET_3 = [MOD.value, Keyboard.CTRL.value]
@@ -104,5 +104,13 @@ def configure_keymaps(groups):
                 ),
             ]
         )
+    # WIP: shift focus to monitor / screen
+    display_keys = ["u", "i", "y"]
+
+    try:
+        for ix, key in enumerate(display_keys):
+            keys.append(Key(MODIFIER_SET_1, key, lazy.to_screen(ix)))
+    except:
+        pass
 
     return keys
