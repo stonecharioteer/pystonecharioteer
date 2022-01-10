@@ -76,7 +76,7 @@ def configure_keymaps(groups):
         Key(
             MODIFIER_SET_1,
             "r",
-            lazy.spawncmd(),
+            lazy.spawn("""rofi -modi "drun,run,window,ssh" -show drun"""),
             desc="Spawn a command using a prompt widget",
         ),
     ]
