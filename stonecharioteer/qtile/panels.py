@@ -21,26 +21,45 @@ from libqtile.widget import (
 from libqtile.bar import Bar, STRETCH
 
 
+def autorandr(config):
+    from libqtile import qtile
+
+    qtile.cmd_spawn(f"/opt/qtile/bin/autorandr {config}")
+
+
 def get_top_bar():
     current_layout = CurrentLayout()
-    prompt_widget = Prompt()
     system_tray = Systray()
     capslock_numlock_indicator = CapsNumLockIndicator()
     cpu_indicator = CPU()
     memory_indicator = Memory()
     hdd_indicator = HDDGraph()
     volume_control = Volume(cardid="1")
+    autorandr_home_button = TextBox(
+        text="HOME", mouse_callbacks={"Button1": lambda: autorandr("home")}
+    )
+    autorandr_center_button = TextBox(
+        text="CENT", mouse_callbacks={"Button1": lambda: autorandr("center-monitor")}
+    )
+    autorandr_external_button = TextBox(
+        text="EXT", mouse_callbacks={"Button1": lambda: autorandr("external")}
+    )
+    autorandr_mobile_button = TextBox(
+        text="MOBILE", mouse_callbacks={"Button1": lambda: autorandr("mobile")}
+    )
 
     network_indicator = Net()
-    spacer = Spacer(length=STRETCH)
 
     default_size = 24
 
     default_top_bar = Bar(
         [
             current_layout,
-            prompt_widget,
-            spacer,
+            Spacer(length=10),
+            autorandr_home_button,
+            autorandr_external_button,
+            autorandr_mobile_button,
+            Spacer(length=STRETCH),
             TextBox(text="CPU:"),
             cpu_indicator,
             TextBox(text="Memory:"),
