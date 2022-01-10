@@ -57,6 +57,7 @@ def get_top_bar():
             current_layout,
             Spacer(length=10),
             autorandr_home_button,
+            autorandr_center_button,
             autorandr_external_button,
             autorandr_mobile_button,
             Spacer(length=STRETCH),
