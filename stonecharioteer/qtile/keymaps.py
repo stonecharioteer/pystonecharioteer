@@ -2,6 +2,7 @@ from libqtile.lazy import lazy
 from libqtile.config import Key
 from libqtile.utils import guess_terminal
 from stonecharioteer.qtile.inputs import Keyboard, MOD
+from stonecharioteer.utils.displays import get_display_info
 
 
 def configure_keymaps(groups):
@@ -104,8 +105,17 @@ def configure_keymaps(groups):
                 ),
             ]
         )
+
+    displays = get_display_info()
+    if len(displays) == 2:
+        # FIXME: Figure out which is on the left or right intuitively.
+        display_keys = ["u", "y"]
+    elif len(displays) == 3:
+        display_keys = ["u", "i", "y"]
+    else:
+        display_keys = ["u"]
+
     # WIP: shift focus to monitor / screen
-    display_keys = ["u", "i", "y"]
 
     try:
         for ix, key in enumerate(display_keys):
