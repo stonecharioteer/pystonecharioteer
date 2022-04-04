@@ -1,6 +1,7 @@
 from libqtile.lazy import lazy
 from libqtile.config import Key
 from libqtile.utils import guess_terminal
+from libqtile.log_utils import logger
 from stonecharioteer.qtile.inputs import Keyboard, MOD
 from stonecharioteer.utils.displays import get_display_info
 
@@ -109,17 +110,31 @@ def configure_keymaps(groups):
     displays = get_display_info()
     if len(displays) == 2:
         # FIXME: Figure out which is on the left or right intuitively.
-        display_keys = ["u", "y"]
+        display_keys = [
+            ("u", "eDP"),
+            # FIXME: This could be DisplayPort-0 or DisplayPort-1
+            ("y", "DisplayPort-0"),
+        ]
     elif len(displays) == 3:
         display_keys = ["u", "i", "y"]
+    elif len(displays) == 4:
+        display_keys = [
+            ("y", "DisplayPort-1"),
+            ("u", "HDMI-A-0"),
+            ("i", "eDP"),
+            ("m", "DisplayPort-0"),
+        ]
     else:
         display_keys = ["u"]
 
     # WIP: shift focus to monitor / screen
-
     try:
-        for ix, key in enumerate(display_keys):
-            keys.append(Key(MODIFIER_SET_1, key, lazy.to_screen(ix)))
+        for ix, (key, display) in enumerate(display_keys):
+
+            jerry_command = "jerry -m {}".format(display)
+            logger.warning("Monitor = {}".format(display))
+            logger.debug(jerry_command)
+            keys.append(Key(MODIFIER_SET_1, key, lazy.spawn(jerry_command)))
     except:
         pass
 
