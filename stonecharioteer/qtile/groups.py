@@ -7,15 +7,18 @@ from libqtile.config import Group
 class GroupName(Enum):
     """Enumerated group names"""
 
-    WEB = "WEB"
-    CHAT = "CHAT"
-    TERM = "TERM"
-    DEV = "DEV"
-    NULL = "NULL"
-    TMP = "TMP"
-    CALL = "CALL"
-    SANDBOX1 = "SNDBX1"
-    SANDBOX2 = "SNDBX2"
+    WEB = "a"
+    CHAT = "s"
+    TERM = "d"
+    DEV = "f"
+    NULL = "g"
+    TMP = "z"
+    CALL = "x"
+    SANDBOX1 = "c"
+    SANDBOX2 = "v"
+    SANDBOX3 = "b"
 
 
-groups = [Group(f"{ix+1}: {group.value}") for ix, group in enumerate(list(GroupName))]
+groups = [
+    Group(f"{group.value}: {group.name}") for ix, group in enumerate(list(GroupName))
+]

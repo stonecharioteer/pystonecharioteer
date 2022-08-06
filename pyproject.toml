@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "stonecharioteer"
-version = "0.4.0"
+version = "0.5.0"
 description = "My personal utils and configs, managed via python library"
 authors = ["Vinay Keerthi <11478411+stonecharioteer@users.noreply.github.com>"]
 
@@ -14,6 +14,7 @@ psutil = "^5.8.0"
 types-toml = "^0.10.1"
 mypy = "^0.910"
 python-xlib = "^0.31"
+typeguard = "^2.13.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

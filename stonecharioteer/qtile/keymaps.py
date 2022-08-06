@@ -75,26 +75,36 @@ def configure_keymaps(groups):
             lazy.spawn("""rofi -modi "drun,run,window,ssh" -show drun"""),
             desc="Spawn a command using a prompt widget",
         ),
+        # find mouse
+        Key(
+            SuperControl,
+            "o",
+            lazy.spawn(
+                'find-cursor -c "#ffaa33" --follow --distance 10 --line-width 1 --size 100 --wait 200 -g -o 1 -O "#88ff33" -t'
+            ),
+        ),
     ]
 
     for ix, group in enumerate(groups):
+        logger.warning(group.name)
+        key, val = group.name.split(":")
         keys.extend(
             [
                 Key(
                     Super,
-                    str(ix + 1),
+                    key,
                     lazy.group[group.name].toscreen(),
                     desc=f"Switch to group {group.name}",
                 ),
                 Key(
                     SuperShift,
-                    str(ix + 1),
+                    key,
                     lazy.window.togroup(group.name, switch_group=True),
                     desc=f"Switch to & move focussed window to group {group.name}",
                 ),
                 Key(
                     SuperControl,
-                    str(ix + 1),
+                    key,
                     lazy.window.togroup(group.name),
                     desc=f"Move focussed window to group {group.name}",
                 ),

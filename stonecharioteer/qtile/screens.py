@@ -1,8 +1,8 @@
 """This module configures the monitors depending on how many displays there
 are.
 """
-
 from libqtile.config import Screen
+from stonecharioteer import config_parser
 from stonecharioteer.qtile.panels import get_top_bar, get_bottom_bar
 from stonecharioteer.utils.displays import get_display_info
 
@@ -10,6 +10,7 @@ from stonecharioteer.utils.displays import get_display_info
 def configure_screens():
     """This function configures the screens based on how many active
     monitors there are currently."""
+    # config = config_parser.get_config()
     displays = get_display_info()
 
     screens = []
