@@ -1,3 +1,4 @@
+import os
 from libqtile.lazy import lazy
 from libqtile.config import Key
 from libqtile.utils import guess_terminal
@@ -8,7 +9,7 @@ from stonecharioteer.utils.displays import get_display_info
 
 def configure_keymaps(groups):
     """Configures keymaps"""
-    terminal = "/home/stonecharioteer/.local/bin/kitty"
+    terminal = os.environ.get("QTILE_TERMINAL", guess_terminal())
     Super = [MOD.value]
     SuperShift = [MOD.value, Keyboard.SHIFT.value]
     SuperControl = [MOD.value, Keyboard.CTRL.value]
@@ -81,6 +82,13 @@ def configure_keymaps(groups):
             "o",
             lazy.spawn(
                 'find-cursor -c "#ffaa33" --follow --distance 10 --line-width 1 --size 100 --wait 200 -g -o 1 -O "#88ff33" -t'
+            ),
+        ),
+        Key(
+            Super,
+            "o",
+            lazy.spawn(
+                "scrot -s -e 'mv $f ~/Pictures/ && echo ~/Pictures/$f | xclip -selection clipboard'"
             ),
         ),
     ]
