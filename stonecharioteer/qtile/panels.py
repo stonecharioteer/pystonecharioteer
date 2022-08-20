@@ -32,7 +32,7 @@ def autorandr(config):
 def get_top_bar():
     current_layout = CurrentLayout(
         font="JetBrains Mono",
-        fontsize=12,
+        fontsize=14,
         foreground=colors[6],
         background=colors[0],
     )
