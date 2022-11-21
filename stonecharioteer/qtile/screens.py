@@ -9,7 +9,6 @@ from stonecharioteer.utils.displays import get_display_info
 def configure_screens():
     """This function configures the screens based on how many active
     monitors there are currently."""
-    # config = config_parser.get_config()
     displays = get_display_info()
 
     screens = []

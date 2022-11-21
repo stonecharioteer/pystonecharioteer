@@ -120,7 +120,7 @@ def configure_keymaps(groups, cfg):
         )
 
     monitors = cfg.get("monitors", [])
-    for monitor in monitors.keys():
+    for monitor in monitors:
        connector = monitor["connector"]
        keymap = monitor["keymap"]
        jerry_command = f"jerry -m {connector}" 
