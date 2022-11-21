@@ -7,7 +7,7 @@ from stonecharioteer.qtile.inputs import Keyboard, MOD
 from stonecharioteer.utils.displays import get_display_info
 
 
-def configure_keymaps(groups):
+def configure_keymaps(groups, cfg):
     """Configures keymaps"""
     terminal = os.environ.get("QTILE_TERMINAL", guess_terminal())
     Super = [MOD.value]
@@ -119,19 +119,12 @@ def configure_keymaps(groups):
             ]
         )
 
-    display_keys = [
-        ("u", "eDP"),
-        ("m", "DisplayPort-0"),
-        ("y", "DisplayPort-1"),
-        ("i", "HDMI-A-0"),
-    ]
-    try:
-        for ix, (key, display) in enumerate(display_keys):
-            jerry_command = "jerry -m {}".format(display)
-            logger.warning("Monitor = {}".format(display))
-            logger.debug(jerry_command)
-            keys.append(Key(Super, key, lazy.spawn(jerry_command)))
-    except:
-        pass
+    monitors = cfg.get("monitors", [])
+    for monitor in monitors.keys():
+       connector = monitor["connector"]
+       keymap = monitor["keymap"]
+       jerry_command = f"jerry -m {connector}" 
+       logger.warning(f"Monitor = {connector}")
+       keys.append(Key(Super, keymap, lazy.spawn(jerry_command)))
 
     return keys

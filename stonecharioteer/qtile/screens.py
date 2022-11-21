@@ -2,7 +2,6 @@
 are.
 """
 from libqtile.config import Screen
-from stonecharioteer import config_parser
 from stonecharioteer.qtile.panels import get_top_bar, get_bottom_bar
 from stonecharioteer.utils.displays import get_display_info
 

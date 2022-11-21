@@ -1,7 +1,15 @@
 import subprocess
+import json
+import os
 from stonecharioteer.qtile import config
+from libqtile import hook
 
-c = config()
+config_file = os.path.expanduser("~/.config/qtile/stonecharioteer.json")
+
+with open(config_file) as f:
+    cfg = json.load(f)
+
+c = config(cfg)
 
 mod = c["mod"]
 groups = c["groups"]

@@ -1,0 +1,12 @@
+{
+  "monitors": [
+    {
+      "keymap": "u",
+      "connector": "DP-0"
+    },
+    {
+      "keymap": "i",
+      "connector": "DP-4"
+    }
+  ]
+}

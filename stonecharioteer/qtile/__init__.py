@@ -2,7 +2,7 @@
 from stonecharioteer.logger import logger, configure_logger
 
 
-def config():
+def config(cfg):
     """This function modifies the global variables, injecting
     parameters required to customize qtile."""
     configure_logger()
@@ -31,7 +31,7 @@ def config():
     logger.debug("Setting `screens`")
     configurables["screens"] = screens
     logger.debug("Setting `keys`")
-    configurables["keys"] = configure_keymaps(groups=groups)
+    configurables["keys"] = configure_keymaps(groups=groups, cfg=cfg)
 
     logger.debug("Setting misc. items.")
     # FIXME: Remove these later, or investigate if they're required.
