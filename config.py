@@ -30,6 +30,8 @@ def dbus_register():
    if not id:
       return
 
+   autostart_script = os.path.expanduser("~/.config/qtile/autostart.sh")
+   subprocess.Popen([autostart_script])
    subprocess.Popen(['dbus-send',
                      '--session',
                      '--print-reply',

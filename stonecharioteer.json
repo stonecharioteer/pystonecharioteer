@@ -1,12 +1,20 @@
 {
   "monitors": [
     {
+      "keymap": "y",
+      "connector": "DisplayPort-1-0"
+    },
+    {
       "keymap": "u",
-      "connector": "DP-0"
+      "connector": "HDMI-A-1-0"
     },
     {
       "keymap": "i",
-      "connector": "DP-4"
+      "connector": "DisplayPort-1"
+    },
+    {
+      "keymap": "m",
+      "connector": "eDP"
     }
   ]
 }
