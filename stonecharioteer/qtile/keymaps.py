@@ -20,12 +20,7 @@ def configure_keymaps(groups, cfg):
         Key(Super, "l", lazy.layout.right(), desc="Move focus to right"),
         Key(Super, "j", lazy.layout.down(), desc="Move focus down"),
         Key(Super, "k", lazy.layout.up(), desc="Move focus up"),
-        Key(
-            Super,
-            "space",
-            lazy.layout.next(),
-            desc="Move window focus to other window",
-        ),
+        # TODO: map `lazy.window.toggle_maximize to something`
         # Move windows between left/right columns or move up/down in current stack.
         # Moving out of range in Columns layout will create new column.
         Key(
@@ -65,6 +60,7 @@ def configure_keymaps(groups, cfg):
             desc="Toggle between split and unsplit sides of stack",
         ),
         Key(Super, "Return", lazy.spawn(terminal), desc="Launch terminal"),
+        Key(SuperControl, "s", lazy.spawn("xsecurelock"), desc="Lock screen with xsecurelock"),
         # Toggle between different layouts as defined below
         Key(Super, "Tab", lazy.next_layout(), desc="Toggle between layouts"),
         Key(Super, "w", lazy.window.kill(), desc="Kill focused window"),
