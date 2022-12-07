@@ -5,7 +5,7 @@ from stonecharioteer.logger import logger, configure_logger
 def config(cfg):
     """This function modifies the global variables, injecting
     parameters required to customize qtile."""
-    configure_logger()
+    configure_logger(cfg)
     logger.debug("Importing dependencies.")
     from libqtile.utils import guess_terminal
 
