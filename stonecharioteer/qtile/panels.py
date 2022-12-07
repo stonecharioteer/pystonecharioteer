@@ -22,6 +22,8 @@ from libqtile.bar import Bar, STRETCH
 
 from stonecharioteer.constants import colors
 
+FONT = "JetBrainsMono Nerd Font Mono"
+
 
 def autorandr(config):
     from libqtile import qtile
@@ -31,7 +33,7 @@ def autorandr(config):
 
 def get_top_bar():
     current_layout = CurrentLayout(
-        font="JetBrains Mono",
+        font=FONT,
         fontsize=14,
         foreground=colors[6],
         background=colors[0],
@@ -58,7 +60,7 @@ def get_top_bar():
     autorandr_home_button = TextBox(
         foreground=colors[6],
         background=colors[0],
-        font="JetBrains Mono",
+        font=FONT,
         fontsize=12,
         text="HOME",
         mouse_callbacks={"Button1": lambda: autorandr("home")},
@@ -66,7 +68,7 @@ def get_top_bar():
     autorandr_center_button = TextBox(
         foreground=colors[6],
         background=colors[0],
-        font="JetBrains Mono",
+        font=FONT,
         fontsize=12,
         text="CENT",
         mouse_callbacks={"Button1": lambda: autorandr("center-monitor")},
@@ -74,7 +76,7 @@ def get_top_bar():
     autorandr_external_button = TextBox(
         foreground=colors[6],
         background=colors[0],
-        font="JetBrains Mono",
+        font=FONT,
         fontsize=12,
         text="EXT",
         mouse_callbacks={"Button1": lambda: autorandr("external")},
@@ -82,7 +84,7 @@ def get_top_bar():
     autorandr_mobile_button = TextBox(
         foreground=colors[6],
         background=colors[0],
-        font="JetBrains Mono",
+        font=FONT,
         fontsize=12,
         text="MOBILE",
         mouse_callbacks={"Button1": lambda: autorandr("mobile")},
@@ -131,7 +133,7 @@ def get_top_bar():
 
 def get_bottom_bar():
     group_box = GroupBox(
-        font="JetBrains Mono",
+        font=FONT,
         fontsize=12,
         margin_x=5,
         margin_y=3,
@@ -153,7 +155,7 @@ def get_bottom_bar():
     )
 
     window_name = WindowName(
-        font="JetBrains Mono",
+        font=FONT,
         fontsize=14,
         foreground=colors[3],
         background=colors[0],
@@ -204,7 +206,7 @@ def get_bottom_bar():
 def get_sep():
     return TextBox(
         text="|",
-        font="JetBrains Mono",
+        font=FONT,
         background=colors[0],
         foreground=colors[10],
         padding=2,
