@@ -43,57 +43,33 @@ def get_top_bar(cfg: dict):
     capslock_numlock_indicator = CapsNumLockIndicator(
         foreground=colors[6],
         background=colors[0],
+        font=cfg.get("font", FONT),
+        fontsize=cfg.get("font_size", FONT_SIZE),
     )
     cpu_indicator = CPU(
         foreground=colors[6],
         background=colors[0],
+        font=cfg.get("font", FONT),
+        fontsize=cfg.get("font_size", FONT_SIZE),
     )
     memory_indicator = Memory(
         foreground=colors[6],
         background=colors[0],
+        font=cfg.get("font", FONT),
+        fontsize=cfg.get("font_size", FONT_SIZE),
     )
     hdd_indicator = HDDGraph(
         foreground=colors[6],
         background=colors[0],
     )
-    volume_control = Volume(cardid="1")
-    # TODO: Figure out what the current layout is and highlight that.
-    autorandr_home_button = TextBox(
-        foreground=colors[6],
-        background=colors[0],
-        font=cfg.get("font", FONT),
-        fontsize=12,
-        text="HOME",
-        mouse_callbacks={"Button1": lambda: autorandr("home")},
+    volume_control = Volume(
+        cardid="1",
     )
-    autorandr_center_button = TextBox(
-        foreground=colors[6],
-        background=colors[0],
-        font=cfg.get("font", FONT),
-        fontsize=12,
-        text="CENT",
-        mouse_callbacks={"Button1": lambda: autorandr("center-monitor")},
-    )
-    autorandr_external_button = TextBox(
-        foreground=colors[6],
-        background=colors[0],
-        font=cfg.get("font", FONT),
-        fontsize=12,
-        text="EXT",
-        mouse_callbacks={"Button1": lambda: autorandr("external")},
-    )
-    autorandr_mobile_button = TextBox(
-        foreground=colors[6],
-        background=colors[0],
-        font=cfg.get("font", FONT),
-        fontsize=12,
-        text="MOBILE",
-        mouse_callbacks={"Button1": lambda: autorandr("mobile")},
-    )
-
     network_indicator = Net(
         foreground=colors[6],
         background=colors[0],
+        font=cfg.get("font", FONT),
+        fontsize=cfg.get("font_size", FONT_SIZE),
     )
 
     default_size = 24
@@ -103,25 +79,37 @@ def get_top_bar(cfg: dict):
             Sep(linewidth=0, padding=5, foreground=colors[2], background=colors[0]),
             current_layout,
             get_sep(cfg),
-            Spacer(length=10, foreground=colors[2], background=colors[0]),
-            autorandr_home_button,
-            autorandr_center_button,
-            autorandr_external_button,
-            autorandr_mobile_button,
-            get_sep(cfg),
             Spacer(length=STRETCH, foreground=colors[2], background=colors[0]),
             cpu_indicator,
             get_sep(cfg),
             memory_indicator,
             get_sep(cfg),
-            TextBox(text="HDD:", foreground=colors[6], background=colors[0]),
+            TextBox(
+                text="HDD:",
+                foreground=colors[6],
+                background=colors[0],
+                font=cfg.get("font", FONT),
+                fontsize=cfg.get("font_size", FONT_SIZE),
+            ),
             hdd_indicator,
             get_sep(cfg),
             system_tray,
-            TextBox(text="Net:", foreground=colors[6], background=colors[0]),
+            TextBox(
+                text="Net:",
+                foreground=colors[6],
+                background=colors[0],
+                font=cfg.get("font", FONT),
+                fontsize=cfg.get("font_size", FONT_SIZE),
+            ),
             network_indicator,
             get_sep(cfg),
-            TextBox(text="Vol:", foreground=colors[6], background=colors[0]),
+            TextBox(
+                text="Vol:",
+                foreground=colors[6],
+                background=colors[0],
+                font=cfg.get("font", FONT),
+                fontsize=cfg.get("font_size", FONT_SIZE),
+            ),
             volume_control,
             get_sep(cfg),
             capslock_numlock_indicator,
@@ -198,12 +186,16 @@ def get_bottom_bar(cfg: dict):
                 text="Battery [",
                 foreground=colors[6],
                 background=colors[0],
+                font=cfg.get("font", FONT),
+                fontsize=12,
             ),
             battery_indicator,
             TextBox(
                 text="]",
                 foreground=colors[6],
                 background=colors[0],
+                font=cfg.get("font", FONT),
+                fontsize=cfg.get("font_size", FONT_SIZE),
             ),
             quick_exit,
         ],
