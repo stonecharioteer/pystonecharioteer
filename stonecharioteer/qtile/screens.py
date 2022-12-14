@@ -6,15 +6,15 @@ from stonecharioteer.qtile.panels import get_top_bar, get_bottom_bar
 from stonecharioteer.utils.displays import get_display_info
 
 
-def configure_screens():
+def configure_screens(cfg: dict):
     """This function configures the screens based on how many active
     monitors there are currently."""
     displays = get_display_info()
 
     screens = []
     default_screen = Screen(
-        top=get_top_bar(),
-        bottom=get_bottom_bar(),
+        top=get_top_bar(cfg),
+        bottom=get_bottom_bar(cfg),
     )
     if len(displays) == 1:
         # If there is only 1 display, it should contain the default screen.
@@ -25,7 +25,7 @@ def configure_screens():
         used_default_screen = False
         for display in displays:
             if display["name"] == "eDP":
-                screen = Screen(bottom=get_bottom_bar())
+                screen = Screen(bottom=get_bottom_bar(cfg))
                 screens.append(screen)
             else:
                 # account for the fact that both screens could be external screens.
@@ -39,7 +39,7 @@ def configure_screens():
                     screens.append(default_screen)
                     used_default_screen = True
                 else:
-                    screen = Screen(bottom=get_bottom_bar())
+                    screen = Screen(bottom=get_bottom_bar(cfg))
                     screens.append(screen)
     else:
         # There are more than 2 screens.
@@ -51,7 +51,7 @@ def configure_screens():
                 screens.append(default_screen)
                 used_default_screen = True
             else:
-                screen = Screen(bottom=get_bottom_bar())
+                screen = Screen(bottom=get_bottom_bar(cfg))
                 screens.append(screen)
         # if the default screen wasn't used anywhere (not quite possible, but who knows?)
         # set the last identified screen to the default screen.

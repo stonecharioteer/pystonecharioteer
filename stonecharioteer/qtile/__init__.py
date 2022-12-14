@@ -2,7 +2,7 @@
 from stonecharioteer.logger import logger, configure_logger
 
 
-def config(cfg):
+def config(cfg: dict):
     """This function modifies the global variables, injecting
     parameters required to customize qtile."""
     configure_logger(cfg)
@@ -18,7 +18,7 @@ def config(cfg):
 
     logger.debug("Building screens")
     configurables = {}
-    screens = configure_screens()
+    screens = configure_screens(cfg)
 
     logger.debug("Setting `mod` key")
     configurables["mod"] = MOD.value
