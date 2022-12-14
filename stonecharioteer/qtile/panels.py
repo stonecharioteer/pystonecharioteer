@@ -23,6 +23,7 @@ from libqtile.bar import Bar, STRETCH
 from stonecharioteer.constants import colors
 
 FONT = "JetBrainsMono Nerd Font Mono"
+FONT_SIZE = 14
 
 
 def autorandr(config):
@@ -34,7 +35,7 @@ def autorandr(config):
 def get_top_bar(cfg: dict):
     current_layout = CurrentLayout(
         font=cfg.get("font", FONT),
-        fontsize=14,
+        fontsize=cfg.get("font_size", FONT_SIZE),
         foreground=colors[6],
         background=colors[0],
     )
@@ -156,7 +157,7 @@ def get_bottom_bar(cfg: dict):
 
     window_name = WindowName(
         font=cfg.get("font", FONT),
-        fontsize=14,
+        fontsize=cfg.get("font_size", FONT_SIZE),
         foreground=colors[3],
         background=colors[0],
         padding_x=10,
@@ -210,5 +211,5 @@ def get_sep(cfg: dict):
         background=colors[0],
         foreground=colors[10],
         padding=2,
-        fontsize=14,
+        fontsize=cfg.get("font_size", FONT_SIZE),
     )
