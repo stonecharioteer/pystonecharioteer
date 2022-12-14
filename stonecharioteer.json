@@ -1,5 +1,6 @@
 {
-  "font": "JetBrainsMono Nerd Font",
+  "font": "Liberation Sans Narrow",
+  "font_size": 18,
   "monitors": [
     {
       "keymap": "y",
