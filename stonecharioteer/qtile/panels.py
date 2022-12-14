@@ -33,12 +33,7 @@ def autorandr(config):
 
 
 def get_top_bar(cfg: dict):
-    current_layout = CurrentLayout(
-        font=cfg.get("font", FONT),
-        fontsize=cfg.get("font_size", FONT_SIZE),
-        foreground=colors[6],
-        background=colors[0],
-    )
+    """Gets default top bar"""
     system_tray = Systray(foreground=colors[6], background=colors[0], padding=5)
     capslock_numlock_indicator = CapsNumLockIndicator(
         foreground=colors[6],
@@ -64,6 +59,10 @@ def get_top_bar(cfg: dict):
     )
     volume_control = Volume(
         cardid="1",
+        foreground=colors[6],
+        background=colors[0],
+        font=cfg.get("font", FONT),
+        fontsize=cfg.get("font_size", FONT_SIZE),
     )
     network_indicator = Net(
         foreground=colors[6],
@@ -71,13 +70,38 @@ def get_top_bar(cfg: dict):
         font=cfg.get("font", FONT),
         fontsize=cfg.get("font_size", FONT_SIZE),
     )
-
+    # TODO: Only add this if this is a laptop, control through config.
+    battery_indicator = Battery(
+        foreground=colors[6],
+        background=colors[0],
+        font=cfg.get("font", FONT),
+        fontsize=cfg.get("font_size", FONT_SIZE),
+    )
+    quick_exit = QuickExit(
+        foreground=colors[6],
+        background=colors[0],
+        font=cfg.get("font", FONT),
+        fontsize=cfg.get("font_size", FONT_SIZE),
+    )
     default_size = 24
-
     default_top_bar = Bar(
         [
-            Sep(linewidth=0, padding=5, foreground=colors[2], background=colors[0]),
-            current_layout,
+            TextBox(
+                text="Battery [",
+                foreground=colors[6],
+                background=colors[0],
+                font=cfg.get("font", FONT),
+                fontsize=12,
+            ),
+            battery_indicator,
+            TextBox(
+                text="]",
+                foreground=colors[6],
+                background=colors[0],
+                font=cfg.get("font", FONT),
+                fontsize=cfg.get("font_size", FONT_SIZE),
+            ),
+            quick_exit,
             get_sep(cfg),
             Spacer(length=STRETCH, foreground=colors[2], background=colors[0]),
             cpu_indicator,
@@ -121,6 +145,13 @@ def get_top_bar(cfg: dict):
 
 
 def get_bottom_bar(cfg: dict):
+    """Builds the bottom bar"""
+    current_layout = CurrentLayout(
+        font=cfg.get("font", FONT),
+        fontsize=cfg.get("font_size", FONT_SIZE),
+        foreground=colors[6],
+        background=colors[0],
+    )
     group_box = GroupBox(
         font=cfg.get("font", FONT),
         fontsize=12,
@@ -158,46 +189,19 @@ def get_bottom_bar(cfg: dict):
         font=cfg.get("font", FONT),
         fontsize=cfg.get("font_size", FONT_SIZE),
     )
-    quick_exit = QuickExit(
-        foreground=colors[6],
-        background=colors[0],
-        font=cfg.get("font", FONT),
-        fontsize=cfg.get("font_size", FONT_SIZE),
-    )
-
-    # TODO: Only add this if this is a laptop, control through config.
-    battery_indicator = Battery(
-        foreground=colors[6],
-        background=colors[0],
-        font=cfg.get("font", FONT),
-        fontsize=cfg.get("font_size", FONT_SIZE),
-    )
 
     default_size = 24
 
     default_bottom_bar = Bar(
         [
+            Sep(linewidth=0, padding=5, foreground=colors[2], background=colors[0]),
+            current_layout,
+            get_sep(cfg),
             group_box,
             get_sep(cfg),
             window_name,
             get_sep(cfg),
             clock_widget,
-            TextBox(
-                text="Battery [",
-                foreground=colors[6],
-                background=colors[0],
-                font=cfg.get("font", FONT),
-                fontsize=12,
-            ),
-            battery_indicator,
-            TextBox(
-                text="]",
-                foreground=colors[6],
-                background=colors[0],
-                font=cfg.get("font", FONT),
-                fontsize=cfg.get("font_size", FONT_SIZE),
-            ),
-            quick_exit,
         ],
         default_size,
     )
