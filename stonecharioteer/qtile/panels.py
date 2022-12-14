@@ -31,9 +31,9 @@ def autorandr(config):
     qtile.cmd_spawn(f"/opt/qtile/bin/autorandr {config}")
 
 
-def get_top_bar():
+def get_top_bar(cfg: dict):
     current_layout = CurrentLayout(
-        font=FONT,
+        font=cfg.get("font", FONT),
         fontsize=14,
         foreground=colors[6],
         background=colors[0],
@@ -60,7 +60,7 @@ def get_top_bar():
     autorandr_home_button = TextBox(
         foreground=colors[6],
         background=colors[0],
-        font=FONT,
+        font=cfg.get("font", FONT),
         fontsize=12,
         text="HOME",
         mouse_callbacks={"Button1": lambda: autorandr("home")},
@@ -68,7 +68,7 @@ def get_top_bar():
     autorandr_center_button = TextBox(
         foreground=colors[6],
         background=colors[0],
-        font=FONT,
+        font=cfg.get("font", FONT),
         fontsize=12,
         text="CENT",
         mouse_callbacks={"Button1": lambda: autorandr("center-monitor")},
@@ -76,7 +76,7 @@ def get_top_bar():
     autorandr_external_button = TextBox(
         foreground=colors[6],
         background=colors[0],
-        font=FONT,
+        font=cfg.get("font", FONT),
         fontsize=12,
         text="EXT",
         mouse_callbacks={"Button1": lambda: autorandr("external")},
@@ -84,7 +84,7 @@ def get_top_bar():
     autorandr_mobile_button = TextBox(
         foreground=colors[6],
         background=colors[0],
-        font=FONT,
+        font=cfg.get("font", FONT),
         fontsize=12,
         text="MOBILE",
         mouse_callbacks={"Button1": lambda: autorandr("mobile")},
@@ -101,28 +101,28 @@ def get_top_bar():
         [
             Sep(linewidth=0, padding=5, foreground=colors[2], background=colors[0]),
             current_layout,
-            get_sep(),
+            get_sep(cfg),
             Spacer(length=10, foreground=colors[2], background=colors[0]),
             autorandr_home_button,
             autorandr_center_button,
             autorandr_external_button,
             autorandr_mobile_button,
-            get_sep(),
+            get_sep(cfg),
             Spacer(length=STRETCH, foreground=colors[2], background=colors[0]),
             cpu_indicator,
-            get_sep(),
+            get_sep(cfg),
             memory_indicator,
-            get_sep(),
+            get_sep(cfg),
             TextBox(text="HDD:", foreground=colors[6], background=colors[0]),
             hdd_indicator,
-            get_sep(),
+            get_sep(cfg),
             system_tray,
             TextBox(text="Net:", foreground=colors[6], background=colors[0]),
             network_indicator,
-            get_sep(),
+            get_sep(cfg),
             TextBox(text="Vol:", foreground=colors[6], background=colors[0]),
             volume_control,
-            get_sep(),
+            get_sep(cfg),
             capslock_numlock_indicator,
             Sep(linewidth=0, padding=5, foreground=colors[2], background=colors[0]),
         ],
@@ -131,9 +131,9 @@ def get_top_bar():
     return default_top_bar
 
 
-def get_bottom_bar():
+def get_bottom_bar(cfg: dict):
     group_box = GroupBox(
-        font=FONT,
+        font=cfg.get("font", FONT),
         fontsize=12,
         margin_x=5,
         margin_y=3,
@@ -155,7 +155,7 @@ def get_bottom_bar():
     )
 
     window_name = WindowName(
-        font=FONT,
+        font=cfg.get("font", FONT),
         fontsize=14,
         foreground=colors[3],
         background=colors[0],
@@ -181,9 +181,9 @@ def get_bottom_bar():
     default_bottom_bar = Bar(
         [
             group_box,
-            get_sep(),
+            get_sep(cfg),
             window_name,
-            get_sep(),
+            get_sep(cfg),
             clock_widget,
             TextBox(
                 text="Battery [",
@@ -203,10 +203,10 @@ def get_bottom_bar():
     return default_bottom_bar
 
 
-def get_sep():
+def get_sep(cfg: dict):
     return TextBox(
         text="|",
-        font=FONT,
+        font=cfg.get("font", FONT),
         background=colors[0],
         foreground=colors[10],
         padding=2,

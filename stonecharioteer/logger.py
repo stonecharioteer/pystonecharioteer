@@ -4,6 +4,7 @@ import pathlib
 
 logger = logging.getLogger("stonecharioteer")
 
+
 def configure_logger(cfg: dict):
     logfile = cfg.get("logfile")
     if logfile is not None:
@@ -26,4 +27,8 @@ def configure_logger(cfg: dict):
     file_handler.setFormatter(formatter)
     logger.addHandler(stream_handler)
     logger.addHandler(file_handler)
-    logger.info("Configured the logger with loglevel={} and writing to {}.".format(log_level, logfile))
+    logger.info(
+        "Configured the logger with loglevel={} and writing to {}.".format(
+            log_level, logfile
+        )
+    )

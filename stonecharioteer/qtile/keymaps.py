@@ -4,7 +4,6 @@ from libqtile.config import Key
 from libqtile.utils import guess_terminal
 from libqtile.log_utils import logger
 from stonecharioteer.qtile.inputs import Keyboard, MOD
-from stonecharioteer.utils.displays import get_display_info
 
 
 def configure_keymaps(groups, cfg):
@@ -60,7 +59,12 @@ def configure_keymaps(groups, cfg):
             desc="Toggle between split and unsplit sides of stack",
         ),
         Key(Super, "Return", lazy.spawn(terminal), desc="Launch terminal"),
-        Key(SuperControl, "s", lazy.spawn("xsecurelock"), desc="Lock screen with xsecurelock"),
+        Key(
+            SuperControl,
+            "s",
+            lazy.spawn("xsecurelock"),
+            desc="Lock screen with xsecurelock",
+        ),
         # Toggle between different layouts as defined below
         Key(Super, "Tab", lazy.next_layout(), desc="Toggle between layouts"),
         Key(Super, "w", lazy.window.kill(), desc="Kill focused window"),
@@ -117,10 +121,10 @@ def configure_keymaps(groups, cfg):
 
     monitors = cfg.get("monitors", [])
     for monitor in monitors:
-       connector = monitor["connector"]
-       keymap = monitor["keymap"]
-       jerry_command = f"jerry -m {connector}" 
-       logger.warning(f"Monitor = {connector}")
-       keys.append(Key(Super, keymap, lazy.spawn(jerry_command)))
+        connector = monitor["connector"]
+        keymap = monitor["keymap"]
+        jerry_command = f"jerry -m {connector}"
+        logger.warning(f"Monitor = {connector}")
+        keys.append(Key(Super, keymap, lazy.spawn(jerry_command)))
 
     return keys
