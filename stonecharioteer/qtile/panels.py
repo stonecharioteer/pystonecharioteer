@@ -164,17 +164,25 @@ def get_bottom_bar(cfg: dict):
         margin_x=10,
     )
     clock_widget = Clock(
-        foreground=colors[6], background=colors[0], format="%A, %B %d - %H:%M"
+        foreground=colors[8],
+        background=colors[0],
+        format="%A, %B %d - %H:%M",
+        font=cfg.get("font", FONT),
+        fontsize=cfg.get("font_size", FONT_SIZE),
     )
     quick_exit = QuickExit(
         foreground=colors[6],
         background=colors[0],
+        font=cfg.get("font", FONT),
+        fontsize=cfg.get("font_size", FONT_SIZE),
     )
 
     # TODO: Only add this if this is a laptop, control through config.
     battery_indicator = Battery(
         foreground=colors[6],
         background=colors[0],
+        font=cfg.get("font", FONT),
+        fontsize=cfg.get("font_size", FONT_SIZE),
     )
 
     default_size = 24
