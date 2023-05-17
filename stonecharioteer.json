@@ -4,15 +4,15 @@
   "monitors": [
     {
       "keymap": "y",
-      "connector": "DisplayPort-1-0"
-    },
-    {
-      "keymap": "u",
-      "connector": "HDMI-A-1-0"
+      "connector": "HDMI-A-0"
     },
     {
       "keymap": "i",
-      "connector": "DisplayPort-1"
+      "connector": "DisplayPort-7"
+    },
+    {
+      "keymap": "u",
+      "connector": "DisplayPort-8"
     },
     {
       "keymap": "m",
