@@ -4,7 +4,7 @@
   "monitors": [
     {
       "keymap": "y",
-      "connector": "HDMI-A-0"
+      "connector": "DisplayPort-9"
     },
     {
       "keymap": "i",
